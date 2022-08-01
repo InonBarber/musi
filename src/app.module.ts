@@ -10,6 +10,13 @@ import { SerialRater } from './models/serial-raters.model';
 import { TagModel } from './models/tag.model';
 import { TAGS_TAG_ID_TO_POST_Model } from './models/tags_tag_id_to_post.model';
 import { PostsModule } from './posts/posts.module';
+import { CommentModule } from './comment/comment.module';
+import { CommentController } from './comment/comment.controller';
+import { PostsController } from './posts/posts.controller';
+import { CommentService } from './comment/comment.service';
+import { PostsService } from './posts/posts.service';
+import { UsersService } from './user/user.service';
+import { UsersController } from './user/user.controller';
 
 @Module({
   imports: [
@@ -35,9 +42,9 @@ import { PostsModule } from './posts/posts.module';
         TAGS_TAG_ID_TO_POST_Model,
       ],
       autoLoadModels: true,
-      sync: {
-        force: true,
-      },
+      // sync: {
+      //   force: true,
+      // },
     }),
     SequelizeModule.forFeature([
       Average_raters,
@@ -49,7 +56,12 @@ import { PostsModule } from './posts/posts.module';
     ]),
     PostsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [
+    AppController,
+    CommentController,
+    PostsController,
+    UsersController,
+  ],
+  providers: [AppService, CommentService, PostsService, UsersService],
 })
 export class AppModule {}

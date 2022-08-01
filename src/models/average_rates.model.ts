@@ -11,3 +11,5 @@ export class Average_raters extends Model {
   @Column({ type: DataType.DOUBLE })
   rater_section_3: number;
 }
+
+// [5,10,15,20] = 50/4 = 12.5
